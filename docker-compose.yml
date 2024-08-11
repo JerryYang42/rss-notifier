@@ -1,0 +1,40 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+      - DB_USER=rssuser
+      - DB_HOST=db
+      - DB_NAME=rssdb
+      - DB_PASSWORD=rsspassword
+      - DB_PORT=5432
+      - EMAIL_FROM=your-email@example.com
+      - EMAIL_TO=recipient@example.com
+      - SMTP_HOST=smtp.example.com
+      - SMTP_PORT=587
+      - SMTP_USER=your-smtp-username
+      - SMTP_PASS=your-smtp-password
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=rssuser
+      - POSTGRES_PASSWORD=rsspassword
+      - POSTGRES_DB=rssdb
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

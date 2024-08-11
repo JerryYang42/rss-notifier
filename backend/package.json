@@ -1,0 +1,22 @@
+{
+    "name": "rss-notifier-backend",
+    "version": "1.0.0",
+    "dependencies": {
+      "express": "^4.17.1",
+      "pg": "^8.7.1",
+      "axios": "^0.21.1",
+      "xml2js": "^0.4.23",
+      "nodemailer": "^6.6.3"
+    },
+    "scripts": {
+      "start": "ts-node src/index.ts"
+    },
+    "devDependencies": {
+      "@types/express": "^4.17.13",
+      "@types/pg": "^8.6.1",
+      "@types/xml2js": "^0.4.9",
+      "@types/nodemailer": "^6.4.4",
+      "ts-node": "^10.2.1",
+      "typescript": "^4.4.3"
+    }
+  }

@@ -1,0 +1,5 @@
+CREATE TABLE sources (
+  id SERIAL PRIMARY KEY,
+  url TEXT NOT NULL,
+  last_checked TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
